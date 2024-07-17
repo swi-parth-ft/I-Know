@@ -16,6 +16,8 @@ struct AddPerson: View {
     @State private var image: Image?
     @State private var selectedItem: PhotosPickerItem?
     @State private var selectedImageData: Data? = nil
+    @State private var defaultImageData: Data = UIImage(named: "img")!.jpegData(compressionQuality: 1.0)!
+    
     var body: some View {
         Form {
             TextField("Name", text: $name)
@@ -29,26 +31,40 @@ struct AddPerson: View {
                 }
             }
             Button("Save") {
-                loadImage()
+                Task {
+                    await loadImage()
+                    let person = Person(name: name, meetDate: Date.now, location: location, photo: selectedImageData ?? defaultImageData)
+                    modelContext.insert(person)
+                    dismiss()
+                }
                 
             }
         }
-        .onChange(of: selectedItem, loadImage)
+        .onChange(of: selectedItem) {
+            Task {
+                await loadImage()
+            }
+        }
     }
     
-    func loadImage() {
-        Task {
+    func loadImage() async {
+        do {
             if let imageData = try await selectedItem?.loadTransferable(type: Data.self) {
                 selectedImageData = imageData
-            }else { return }
-
+                if let uiImage = UIImage(data: imageData) {
+                    image = Image(uiImage: uiImage)
+                }
+            } else {
+                selectedImageData = defaultImageData
+                image = Image(uiImage: UIImage(data: defaultImageData)!)
+            }
+        } catch {
+            print("Failed to load image data: \(error.localizedDescription)")
+            selectedImageData = defaultImageData
+            image = Image(uiImage: UIImage(data: defaultImageData)!)
         }
-        
-        let person = Person(name: name, meetDate: Date.now, location: location, photo: selectedImageData)
-        
-        modelContext.insert(person)
-        dismiss()
     }
+
 }
 
 #Preview {

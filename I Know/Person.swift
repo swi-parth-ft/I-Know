@@ -10,13 +10,14 @@ import SwiftData
 import SwiftUICore
 
 @Model
-class Person {
+class Person: Identifiable {
+    let id = UUID()
     let name: String
     let meetDate: Date
     let location: String
-    let photo: Data?
+    let photo: Data
     
-    init(name: String, meetDate: Date, location: String, photo: Data?) {
+    init(name: String, meetDate: Date, location: String, photo: Data) {
         self.name = name
         self.meetDate = meetDate
         self.location = location

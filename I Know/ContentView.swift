@@ -15,7 +15,21 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(persons) { person in
-                    Text(person.name)
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(person.name)
+                                .font(.headline)
+                            Text(person.location)
+                                .font(.subheadline)
+                        }
+                        Spacer()
+                        if let uiImage = UIImage(data: person.photo) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                    }
                 }
             }
             .toolbar {
