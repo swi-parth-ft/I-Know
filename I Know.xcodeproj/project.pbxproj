@@ -13,6 +13,7 @@
 		0778BFF72C4843A2006BDD74 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0778BFF62C4843A2006BDD74 /* Preview Assets.xcassets */; };
 		0778BFFE2C484411006BDD74 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0778BFFD2C484411006BDD74 /* Person.swift */; };
 		0778C0002C48457B006BDD74 /* AddPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0778BFFF2C48457B006BDD74 /* AddPerson.swift */; };
+		0778C0022C4852D2006BDD74 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0778C0012C4852D2006BDD74 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		0778BFF62C4843A2006BDD74 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0778BFFD2C484411006BDD74 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		0778BFFF2C48457B006BDD74 /* AddPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPerson.swift; sourceTree = "<group>"; };
+		0778C0012C4852D2006BDD74 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				0778BFEF2C4843A0006BDD74 /* I_KnowApp.swift */,
 				0778BFF12C4843A0006BDD74 /* ContentView.swift */,
 				0778BFFF2C48457B006BDD74 /* AddPerson.swift */,
+				0778C0012C4852D2006BDD74 /* DetailView.swift */,
 				0778BFFD2C484411006BDD74 /* Person.swift */,
 				0778BFF32C4843A2006BDD74 /* Assets.xcassets */,
 				0778BFF52C4843A2006BDD74 /* Preview Content */,
@@ -146,6 +149,7 @@
 				0778BFFE2C484411006BDD74 /* Person.swift in Sources */,
 				0778BFF22C4843A0006BDD74 /* ContentView.swift in Sources */,
 				0778C0002C48457B006BDD74 /* AddPerson.swift in Sources */,
+				0778C0022C4852D2006BDD74 /* DetailView.swift in Sources */,
 				0778BFF02C4843A0006BDD74 /* I_KnowApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

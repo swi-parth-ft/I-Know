@@ -14,23 +14,27 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(persons) { person in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(person.name)
-                                .font(.headline)
-                            Text(person.location)
-                                .font(.subheadline)
-                        }
-                        Spacer()
-                        if let uiImage = UIImage(data: person.photo) {
-                            Image(uiImage: uiImage)
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                                .clipShape(RoundedRectangle(cornerRadius: 10))
+               
+                    ForEach(persons) { person in
+                        NavigationLink(destination: DetailView(person: person)) {
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text(person.name)
+                                        .font(.headline)
+                                    Text(person.location)
+                                        .font(.subheadline)
+                                }
+                                Spacer()
+                                if let uiImage = UIImage(data: person.photo) {
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                        .frame(width: 100, height: 100)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                            }
                         }
                     }
-                }
+                
             }
             .toolbar {
                 NavigationLink("Add", destination: AddPerson())
