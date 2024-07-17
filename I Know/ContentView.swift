@@ -35,8 +35,17 @@ struct ContentView: View {
             List {
                 ForEach(sortedPersons) { person in
                     Button(action: {
-                        selectedPerson = person
-                        isDetailViewPresented = true
+                        if selectedPerson == person {
+                            // Reset the selected person to nil before reassigning
+                            selectedPerson = nil
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                selectedPerson = person
+                            
+                            }
+                        } else {
+                            selectedPerson = person
+                            
+                        }
                     }) {
                         HStack {
                             VStack(alignment: .leading) {
@@ -83,6 +92,9 @@ struct ContentView: View {
                     DetailView(person: selectedPerson)
                         .presentationDetents([.fraction(0.7), .medium, .large])
                 }
+            }
+            .onChange(of: selectedPerson) { _ in
+                isDetailViewPresented = selectedPerson != nil
             }
         }
     }
