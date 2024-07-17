@@ -13,14 +13,27 @@ struct DetailView: View {
     var body: some View {
         VStack {
             Image(uiImage: UIImage(data: person.photo)!)
-                .resizable()
-                .scaledToFit()
-                .frame(height: 300)
-            
-            Text(person.name)
-            Text(person.location)
-            Text(formatDate(person.meetDate))
+                               .resizable()
+                               .scaledToFit()
+                               .frame(height: 300)
+                               .cornerRadius(22)
+                               .frame(maxWidth: .infinity)
+                               .shadow(radius: 10)
+
+                           Text(person.name)
+                               .font(.title)
+                               .fontWeight(.bold)
+                               .padding(.top, 10)
+
+                           Text(person.location)
+                               .font(.headline)
+                               .foregroundColor(.secondary)
+
+                           Text(formatDate(person.meetDate))
+                               .font(.subheadline)
+                               .foregroundColor(.gray)
         }
+        .padding()
     }
     
     func formatDate(_ date: Date) -> String {

@@ -20,16 +20,25 @@ struct AddPerson: View {
     
     var body: some View {
         Form {
-            TextField("Name", text: $name)
-            TextField("Location", text: $location)
             PhotosPicker(selection: $selectedItem) {
                 if let image {
                     image
                         .resizable()
                         .scaledToFit()
                         .frame(height: 200)
+                        .cornerRadius(22)
+                        .frame(maxWidth: .infinity) // Center the image horizontally
+                        .padding(.top, 10)
+                        .shadow(radius: 5)
+                    
+                } else {
+                    ContentUnavailableView("No Picture", systemImage: "photo.badge.plus", description: Text("Tap to import a photo"))
+                        .frame(maxWidth: .infinity)
                 }
             }
+            TextField("Name", text: $name)
+            TextField("Location", text: $location)
+            
             Button("Save") {
                 Task {
                     await loadImage()
