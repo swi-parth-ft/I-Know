@@ -15,12 +15,14 @@ class Person: Identifiable {
     let name: String
     let meetDate: Date
     let location: String
-    let photo: Data
+    let city: String
+    @Attribute(.externalStorage) let photo: Data
     
-    init(name: String, meetDate: Date, location: String, photo: Data) {
+    init(name: String, meetDate: Date, location: String, photo: Data, city: String) {
         self.name = name
         self.meetDate = meetDate
         self.location = location
         self.photo = photo
+        self.city = city
     }
 }

@@ -34,6 +34,7 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(sortedPersons) { person in
+                    
                     Button(action: {
                         if selectedPerson == person {
                             // Reset the selected person to nil before reassigning
@@ -51,7 +52,7 @@ struct ContentView: View {
                             VStack(alignment: .leading) {
                                 Text(person.name)
                                     .font(.headline)
-                                Text(person.location)
+                                Text(person.city)
                                     .font(.subheadline)
                             }
                             Spacer()
@@ -75,7 +76,7 @@ struct ContentView: View {
                             Text("Sort by name")
                                 .tag(SortOption.name)
                             
-                            Text("Sort by join date")
+                            Text("Sort by date")
                                 .tag(SortOption.meetDate)
                         }
                     }
@@ -90,7 +91,7 @@ struct ContentView: View {
             .sheet(isPresented: $isDetailViewPresented) {
                 if let selectedPerson = selectedPerson {
                     DetailView(person: selectedPerson)
-                        .presentationDetents([.fraction(0.7), .medium, .large])
+                        .presentationDetents([.fraction(0.7), .large, .large])
                 }
             }
             .onChange(of: selectedPerson) { _ in
