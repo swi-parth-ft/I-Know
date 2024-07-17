@@ -43,9 +43,12 @@ struct DetailView: View {
                 
                 Text(cityName)
                     .font(.subheadline)
-                    .foregroundColor(.gray)
+                    .underline()
+                    .foregroundColor(.blue)
                     .onTapGesture {
-                        currentPage = 1
+                        withAnimation {
+                            currentPage = 1
+                        }
                     }
             }
             .padding(.leading, 25)
